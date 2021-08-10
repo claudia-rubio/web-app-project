@@ -34,6 +34,7 @@ export default {
     setCoin() {
       console.log(this.coinToSearch);
       this.$store.commit('increment');
+      this.$store.dispatch("getWeather");
     }
   }
   //props: {

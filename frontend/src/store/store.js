@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-
+import service from "./../services/Service";
 export default createStore({
     "state": {
         "count": 0,
@@ -13,6 +13,11 @@ export default createStore({
         },
     },
     "actions": {
+        async getWeather() {
+            var response = await service.weatherAPI.get("weatherforecast");
+            //var result = JSON.parse(response.data.result);
+            console.log(response.data);
+        }
     },
     "modules": {
     }
