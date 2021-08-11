@@ -34,5 +34,16 @@ namespace Coin.API.Controllers
             var getTask = await httpClient.SendAsync(request);
             return new JsonResult(getTask.Content.ReadAsStringAsync());
         }
+
+        [HttpGet]
+        [Route("coin/{coin}/{numDays}")]
+        public async Task<IActionResult> getCoins(string coin, string numDays)
+        {
+            var url = "https://api.coingecko.com/api/v3/coins/"+coin+"/market_chart?vs_currency=usd&days="+numDays+"&interval=daily";
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            var httpClient = new HttpClient();
+            var getTask = await httpClient.SendAsync(request);
+            return new JsonResult(getTask.Content.ReadAsStringAsync());
+        }
     }
 }
