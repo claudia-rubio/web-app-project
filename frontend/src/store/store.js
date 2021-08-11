@@ -14,9 +14,9 @@ export default createStore({
     },
     "actions": {
         async getWeather() {
-            var response = await service.weatherAPI.get("weatherforecast");
-            //var result = JSON.parse(response.data.result);
-            console.log(response.data);
+            var geckoresp = await service.weatherAPI.get("market");
+            var result = JSON.parse(geckoresp.data.result);
+            console.log(result);
         }
     },
     "modules": {
