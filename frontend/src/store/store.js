@@ -32,7 +32,9 @@ export default createStore({
         },
         async getCoin({commit}, input) {
             console.log(input);
-            
+            if (input.days == null || input.coin == "") {
+                return {error: "Missing field"};
+            }
             var res = await service.coinGeckoAPI.get(`coin/${input.coin}/${input.days}`);
             var result = JSON.parse(res.data.result);
             console.log(result);
